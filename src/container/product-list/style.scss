@@ -21,3 +21,30 @@
     justify-content: space-around;
     margin-top: 15px;
 }
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    max-height: 250px;
+    margin: 50px;
+}
+
+.title_name {
+    font-size: 23px;
+    font-weight: 100;
+    margin-bottom: 15px;
+}
+.body_description {
+    margin-bottom: 15px;
+}
+.mini_id {
+    color: rgb(0 0 0 / 40%);
+}
+.price {
+    margin-right: auto;
+}
+.edit {
+    margin-left: 122px;
+    margin-top: -15px;
+}

@@ -7,19 +7,53 @@ const router = express.Router()
 
 class Product {
   static #list = []
-
-  constructor(email, login, password) {
-    this.email = email;
-    this.login = login;
-    this.password = password;
-    this.id = new Date().getTime()
+  constructor(name, price, description) {
+    this.name = name
+    this.price = price
+    this.description = description
+    this.id = Math.floor(Math.random() * 100000)
+    this.createDate = () => {
+      this.date = new Date().toISOString()
+    }
   }
-  static add = (user) => {
-    this.#list.push(user)
-  }
-
   static getList = () => this.#list
-  
+  checkId = (id) => this.id === id
+  static add = (product) => {
+    this.#list.push(product)
+  }
+  static getById = (id) =>
+    this.#list.find((product) => product.id === id)
+  static updateById = (id, data) => {
+    const product = this.getById(id)
+  }
+  static deleteById = (id) => {
+    const index = this.#list.findIndex(
+      (product) => product.id === id,
+    )
+    if (index !== -1) {
+      this.#list.splice(index, 1)
+      return true
+    } else {
+      return false
+    }
+  }
+  static updateById = (id, data) => {
+    const product = this.getById(id)
+    const { name}  = data;
+    if (product) {
+      if (name) {
+        product.name = name
+      }
+      return true
+    } else {
+      return false
+    }
+  }
+  static update = (name, { product }) => {
+    if (name) {
+      product.name = name
+    }
+  }
 }
   router.get('/product-create', function (req, res) {
     // res.render генерує нам HTML сторінку
@@ -39,15 +73,25 @@ class Product {
     Product.add(product)
     console.log(Product.getList())
   })
-    router.get('/product-alert', function (req, res) {
-    // ↙️ cюди вводимо назву файлу з сontainer
+  router.get('/product-alert', function (req, res) {
+    const { name, price, description } = req.query;
+  
+    console.log('Name:', name);
+    console.log('Price:', price);
+    console.log('Description:', description);
+  
     res.render('product-alert', {
-      // вказуємо назву папки контейнера, в якій знаходяться наші стилі
       style: 'product-alert',
       info: 'Товар успішно додано',
-    })
-    // ↑↑ сюди вводимо JSON дані
-  })
+      data: {
+        product: {
+          name,
+          price,
+          description,
+        },
+      },
+    });
+  });
   // ================================================================
   router.get('/product-list', function (req, res) {
     // res.render генерує нам HTML сторінку
@@ -57,6 +101,7 @@ class Product {
     res.render('product-list', {
       // вказуємо назву папки контейнера, в якій знаходяться наші стилі
       style: 'product-list',
+      
       data: {
         products: {
           list,
@@ -66,5 +111,7 @@ class Product {
     })
     // ↑↑ сюди вводимо JSON дані
   })
+  
+
 
 module.exports = router
