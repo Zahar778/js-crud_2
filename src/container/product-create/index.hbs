@@ -5,21 +5,24 @@
 
 <main class="main">
     <section class="">
-        <div class="form">
-  <h1 class="form__title">Создать пользовотеля</h1>
-<form method="POST" action="/success-info">
+  <div class="form">
+  <h1 class="form__title">Створення товару</h1>
+<form  action="/product-alert">
+<div class="form__title_tu">Информсация про товар</div>
   <div class="form__contrnt">
     <div class="form__field">
-      <label for="email" class="form__label">Email адресс:</label>
-      <input type="email" name="email" class="form__input">
+      <label for="name" class="form__label">Назва товару:</label>
+      <input type="name" name="name" class="form__input">
     </div>
         <div class="form__field">
-      <label for="login" class="form__label">Логин:</label>
-      <input type="login" name="login" class="form__input">
+      <label for="price" class="form__label">Цина:</label>
+      <input type="price" name="price" class="form__input">
     </div>
         <div class="form__field">
-      <label for="password" class="form__label">Пароль:</label>
-      <input type="password" name="password" class="form__input">
+      <label for="description" class="form__label">Опис:</label>
+      
+      <input type="description" name="description" class="form__input">
+      <p class="litl_description">Вiдiбражаеться у картцi товару</p>
     </div>
     <button class="form__button">Создать!</button>
   </div>
@@ -27,7 +30,7 @@
 </div>
     </section>
 
-    <section class="">
+    {{!-- <section class="">
         <div class="form">
   <h1 class="form__title">Список пользовотелей</h1>
     <div class="user-list">
@@ -45,10 +48,10 @@
     </div>
 </form>
 </div>
-    </section>
+    </section> --}}
 </main>
 
-    <section>
+    {{!-- <section>
         <div class="form">
   <h1 class="form__title">Обновить почту пользовотеля</h1>
 <form method="POST" action="/user-update">
@@ -69,7 +72,7 @@
   </div>
 </form>
 </div>
-    </section>
+    </section> --}}
 
 
 {{! 
