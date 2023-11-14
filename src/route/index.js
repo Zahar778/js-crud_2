@@ -113,13 +113,18 @@ router.get('/product-edit/:id', (req, res) => {
   router.get ('/user-delete', function (req, res) {
     const { id } = req.query
 
-    Product.deleteById(Number(id))
+    const deletionSuccessful = Product.deleteById(Number(id));
 
-    res.render( 'product-edit', {
-      style: 'product-edit',
-      info: 'Товар удаленн'
-    })
+    if (deletionSuccessful) {
+      return res.render('product-alert', {
+        style: 'product-alert',
+        info: 'Товар успешно удален',
+      });
+    } else {
+      return res.status(500).send('Failed to delete product');
+    }
   })
+
 
 
 module.exports = router;

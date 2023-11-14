@@ -5,7 +5,7 @@
             {{#if isEmpty}}
                 <div>Error</div>
             {{else}}
-                {{#each list}} --}}
+                {{#each list}}
                     <section class="card">
                         <div class="form__field">
                             <label for="name" class="form__label">Новое название {{name}} товара:</label>
@@ -23,8 +23,10 @@
                         <a href="/edit-product/{{productId}}" class="edit">Редактировать</a>
                         <a href="/user-delete/{{productId}}" class="edit">Удалить</a>
                     </section>
-                {{!-- {{/each}}
+                {{/each}}
             {{/if}}
         {{/with}} --}}
+
+        {{> product-card}}
     </section>
 </main>
