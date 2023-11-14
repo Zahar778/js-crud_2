@@ -26,7 +26,10 @@
                 {{/each}}
             {{/if}}
         {{/with}} --}}
-
-        {{> product-card}}
+    {{#with data.products}}
+        {{#each list}}
+        {{>product-card}}
+        {{/each}}
+    {{/with}}
     </section>
 </main>
