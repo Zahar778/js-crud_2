@@ -3,26 +3,32 @@
 в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
  }}
 <main>
- <body>
-<section>
-        <body>
-            <h1 class="form__title">Список товаров</h1>
-            <p>{{info}}</p>
-{{#with data.products}}
+  <section>
+    <h1 class="form__title">Список товаров</h1>
+    <p>{{info}}</p>
+    {{#with data.products}}
+
+{{#if isEmpty}}
+<div>Error</div>
+{{else }}
 {{#each list}}
             <section class="card">
-                <div class="title_name">{{name}}</div>
-                <div class="body_description">{{description}}</div>
-                <div class="mini_id">Id</div>
-                <div class="price">{{price}}</div>
-                <div class="edit">Редактировать</div>
-            </section>
+            <div class="title_name">{{name}}</div>
+            <div class="body_description">{{description}}</div>
+            <div class="mini_id">Id: {{id}}</div>
+            <div class="price">{{price}}</div>
+            <a href="/product-edit/{{id}}" class="edit">Редактировать</a>
+        </section>
         </body>
     </section>
-{{/each}}
+    {{/each}} 
+    {{/if}}
 {{/with}}
-</body>
+
+{{!-- {{> product-card}} --}}
+  </section>
 </main>
+
 {{! 
     Цей код містить лише те, що буде виводитись в <body>
     Адже наш layout/default.hbs має вже структуру HTML

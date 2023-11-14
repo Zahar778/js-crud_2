@@ -1,0 +1,30 @@
+<main class="main">
+    <section>
+        <h1 class="form__title">Редактировать товар</h1>
+        {{!-- {{#with data.products}}
+            {{#if isEmpty}}
+                <div>Error</div>
+            {{else}}
+                {{#each list}} --}}
+                    <section class="card">
+                        <div class="form__field">
+                            <label for="name" class="form__label">Новое название {{name}} товара:</label>
+                            <input type="text" name="name" class="form__input">
+                        </div>
+                        <div class="form__field">
+                            <label for="price" class="form__label">Старая цена {{price}} Новая цена:</label>
+                            <input type="text" name="price" class="form__input">
+                        </div>
+                        <div class="form__field">
+                            <label for="description" class="form__label">Новое описание:</label>
+                            <input type="text" name="description" class="form__input">
+                            <p class="litl_description">Отображается в карточке товара</p>
+                        </div>
+                        <a href="/edit-product/{{productId}}" class="edit">Редактировать</a>
+                        <a href="/user-delete/{{productId}}" class="edit">Удалить</a>
+                    </section>
+                {{!-- {{/each}}
+            {{/if}}
+        {{/with}} --}}
+    </section>
+</main>
