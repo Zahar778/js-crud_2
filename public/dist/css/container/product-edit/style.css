@@ -64,4 +64,8 @@ main {
   margin-bottom: 8px;
 }
 
+.form__row {
+  display: flex;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -39,7 +39,7 @@ class Product {
   }
   static updateById = (id, data) => {
     const product = this.getById(id)
-    const { name}  = data;
+    const { name } = data;
     if (product) {
       if (name) {
         product.name = name
@@ -98,32 +98,66 @@ router.get('/product-list', function (req, res) {
   })
   // ↑↑ сюди вводимо JSON дані
 })
-router.get('/product-edit/:id', (req, res) => {
-  const productId = req.params.id;
-  const product = Product.getById(productId);
+router.get('/product-edit', function (req, res) {
+  const { id } = req.query
+
+  const product = Product.getById(Number(id))
+
+
+  res.render('product-edit',{
+    style: 'product-edit',
+
+    data: {
+    name: product.name,
+    price: product.price,
+    id: product.id,
+    description: product.description,
+  }}
+  )
+}
+)
+
+router.post('/product-edit', function (req, res) {
+  const { id, name, price, description } = req.body
+
+  const product = Product.updateById(Number(id), {
+    name,
+    price,
+    description,
+  })
 
   if (product) {
-    res.status(404).send('Product not found');
-    return;
+    // ↙️ cюди вводимо назву файлу з сontainer
+    res.render('product-alert', {
+      // вказуємо назву папки контейнера, в якій знаходяться наші стилі
+      style: 'product-alert',
+      info: 'Інформація про товар оновлена',
+    })
+  } else {
+    // ↙️ cюди вводимо назву файлу з сontainer
+    res.render('product-alert', {
+      // вказуємо назву папки контейнера, в якій знаходяться наші стилі
+      style: 'product-alert',
+      info: 'Сталася помилка',
+    })
   }
+  // ↑↑ сюди вводимо JSON дані
+})
 
-  res.render('product-edit', { product });
-});
+router.get('/product-delete', function (req, res) {
+  const { id } = req.query
 
-  router.get ('/user-delete', function (req, res) {
-    const { id } = req.query
+  const deletionSuccessful = Product.deleteById(Number(id));
 
-    const deletionSuccessful = Product.deleteById(Number(id));
-
-    if (deletionSuccessful) {
-      return res.render('product-alert', {
-        style: 'product-alert',
-        info: 'Товар успешно удален',
-      });
-    } else {
-      return res.status(500).send('Failed to delete product');
-    }
-  })
+  if (deletionSuccessful) {
+    return res.render('product-alert', {
+      style: 'product-alert',
+      info: 'Товар успешно удален',
+    });
+  } else {
+    return res.status(500).send('Failed to delete product');
+  }
+})
 
 
 
