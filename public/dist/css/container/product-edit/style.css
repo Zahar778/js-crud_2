@@ -9,15 +9,25 @@
   font-weight: bold;
   padding-bottom: 4px;
   border-bottom: 1px solid #ddd;
+  color: rgb(0, 4, 255);
+}
+.form__title_tu {
+  font-size: 15px;
+  font-weight: bold;
+  padding-bottom: 4px;
+  margin-bottom: 16px;
 }
 .form__contrnt {
   display: grid;
+  justify-content: start;
   gap: 24px;
 }
 .form__field {
   display: flex;
-  flex-direction: column;
   gap: 8px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
 }
 .form__label {
   font-size: 14px;
@@ -30,6 +40,8 @@
   border: 1px solid #ddd;
   padding: 8px;
   border-radius: 20px;
+  background-color: rgb(0, 4, 255);
+  color: #ddd;
 }
 
 main {
@@ -42,6 +54,18 @@ main {
   padding-right: 15px;
   padding-top: 5px;
   padding-bottom: 5px;
+}
+
+.litl_description {
+  font-size: 8px;
+  margin-right: auto;
+  font-weight: bold;
+  color: rgba(28, 29, 29, 0.39);
+  margin-bottom: 8px;
+}
+
+.form__row {
+  display: flex;
 }
 
 /*# sourceMappingURL=style.css.map */
